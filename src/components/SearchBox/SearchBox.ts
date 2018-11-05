@@ -7,10 +7,6 @@
  *
  */
 
-/**
- * @namespace fabric
- */
-namespace fabric {
   /**
    *
    * @param {HTMLElement} container - the target container for an instance of SearchBox
@@ -149,6 +145,9 @@ namespace fabric {
     }
 
     private _handleBlur(event): void {
+      console.log("_handleBlur");
+      if (this._searchBox.classList.contains("ignoreBlur"))
+        return;
       if (!this._clearOnly) {
         this._searchBox.removeEventListener("keyup", this._boundEnableClose);
         setTimeout(() => {
@@ -179,4 +178,3 @@ namespace fabric {
       this._container.classList.add(SB_IS_ANIMATED);
     }
   }
-}
